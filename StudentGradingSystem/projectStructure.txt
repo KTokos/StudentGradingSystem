@@ -1,0 +1,7 @@
+Create a "Student" class that stores a name and a list of grades.
+The program should calculate their average and assign a letter grade.
+
+Concepts: Object-Oriented Programming, Classes, Properties, and Methods
+
+Challenge: Create a list of several students and find out who has the
+           highest average in the class
