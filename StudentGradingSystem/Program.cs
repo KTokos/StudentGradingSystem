@@ -128,7 +128,8 @@ class Program
     {
         // Instantiate random number generator using system-supplied value as seed
         var rand = new Random();
-
+        
+        // Initialize grade
         double grade = 0.0;
 
         Console.WriteLine("\nWould you like to:");
