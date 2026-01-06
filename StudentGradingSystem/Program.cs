@@ -65,7 +65,8 @@ class Program
             Console.WriteLine("2. Add Student");
             Console.WriteLine("3. Assign Grade");
             Console.WriteLine("4. Remove Students");
-            Console.WriteLine("5. Exit");
+            Console.WriteLine("5. Calculate Class Average");
+            Console.WriteLine("6. Exit");
             Console.WriteLine("Select an option: ");
 
             string choice = Console.ReadLine() ?? "";
@@ -82,8 +83,12 @@ class Program
                     AssignGrade();
                     break;
                 case "4":
+                    RemoveStudent();
                     break;
                 case "5":
+                    CalculateClassAverage();
+                    break;
+                case "6":
                     running = false;
                     break;
                 default:
@@ -170,6 +175,8 @@ class Program
                 break;
         }
 
+        ViewStudents();
+
         Console.Write("\nWhich student is this grade being assigned to (list number): ");
         choice = Console.ReadLine() ?? "";
         
@@ -189,4 +196,36 @@ class Program
             Console.WriteLine("Invalid choice. Try again");
         }
     }   
+
+    static void RemoveStudent()
+    {
+        ViewStudents();
+
+        if (students.Count > 0)
+        {
+            Console.Write("\nEnter the list number of the student you'd like to remove: ");
+            
+            if (int.TryParse(Console.ReadLine(), out int index))
+            {
+                // Adjust for 0-based indexing
+                students.RemoveAt(index - 1);
+                Console.WriteLine("Student removed.");
+            }
+        }
+    }
+
+    static void CalculateClassAverage()
+    {
+        double total = 0;
+        double final;
+
+        for (int i = 0; i < students.Count; i++)
+        {
+            total += students[i].NumberGrade;
+        }
+
+        final = total / students.Count;
+
+        Console.WriteLine($"\nClass Average: {final}");
+    }
 }
